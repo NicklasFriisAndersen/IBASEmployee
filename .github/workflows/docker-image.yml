@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches: [main]
-
+    
 jobs:
   build:
     name: "Build and Push Docker Image"
@@ -15,14 +15,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+  
       - name: "Docker Login"
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-
+    
       - name: "Build and Push"
         uses: docker/build-push-action@v2
         with:
